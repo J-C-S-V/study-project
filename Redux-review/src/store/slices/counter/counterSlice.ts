@@ -52,9 +52,13 @@ export const counterSlice = createSlice({
     increment: (state) => {
       state.value += 1;
     },
+    decrement: (state) => {
+      state.value -= 1;
+    },
   },
 });
+console.log("counterSlice.reducer", counterSlice);
 
-export const { increment } = counterSlice.actions;
+export const { increment, decrement } = counterSlice.actions;
 export const selectCount = (state) => state.counter.value;
 console.log(increment);
