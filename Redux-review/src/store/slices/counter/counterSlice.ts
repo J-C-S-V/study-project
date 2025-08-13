@@ -34,15 +34,15 @@
 // // Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.counter.value;
 
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-// import { PayloadAction } from "@reduxjs/toolkit";
 
 interface CounterSlice {
   value: number;
 }
 
 const initialState: CounterSlice = {
-  value: 10,
+  value: 20,
 };
 
 export const counterSlice = createSlice({
@@ -55,10 +55,17 @@ export const counterSlice = createSlice({
     decrement: (state) => {
       state.value -= 1;
     },
+    incrementByTwo: (state) => {
+      state.value += 2;
+    },
+    incrementByAmount: (state, action: PayloadAction<number>) => {
+      state.value += action.payload;
+    },
   },
 });
 console.log("counterSlice.reducer", counterSlice);
 
-export const { increment, decrement } = counterSlice.actions;
+export const { increment, decrement, incrementByTwo, incrementByAmount } =
+  counterSlice.actions;
 export const selectCount = (state) => state.counter.value;
 console.log(increment);
