@@ -34,3 +34,7 @@ export const setTimer = () => {
 // );
 // const data = await response.json();
 // console.log(data);
+
+export const myThunkActionCreator = (someArgument) => {
+  return (dispatch, getState) => {};
+};

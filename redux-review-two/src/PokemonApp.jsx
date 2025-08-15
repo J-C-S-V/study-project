@@ -2,6 +2,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons, setTimer } from "./slices/pokemon/thunks";
 import { resetTimer, startTimer } from "./slices/timer/timerSlice";
+import {
+  consoleLogSomething,
+  startLoadingPokemons,
+} from "./slices/pokemon/pokemonSlice";
 
 export const PokemonApp = () => {
   const dispatch = useDispatch();
@@ -24,7 +28,7 @@ export const PokemonApp = () => {
     <>
       <h1>Pokemons</h1>
       <hr />
-      <span>{isLoading ? "Treu" : "False"}</span>
+      <span>{isLoading ? "True" : "False"}</span>
       <ul>
         {pokemons.map((pokemon) => {
           return <li key={pokemon.name}>{pokemon.name}</li>;
@@ -32,10 +36,12 @@ export const PokemonApp = () => {
       </ul>
       <button
         disabled={isLoading}
-        onClick={() => dispatch(getPokemons(page + 1))}
+        // onClick={() => dispatch(getPokemons(page + 1))}
+        onClick={() => dispatch(startLoadingPokemons())}
       >
         Load more pokemons
       </button>
+      <button onClick={() => dispatch(consoleLogSomething())}>Click</button>
       <div>Page: {page}</div>
       <div>
         {/* That type is the name of the action located in the timerSlice */}

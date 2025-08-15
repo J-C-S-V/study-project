@@ -13,6 +13,9 @@ export const pokemonSlice = createSlice({
     startLoadingPokemons: (state) => {
       state.isLoading = true;
     },
+    consoleLogSomething: () => {
+      console.log("Something");
+    },
     setPokemons: (state, action) => {
       state.isLoading = false;
       state.page = action.payload.page;
@@ -21,5 +24,6 @@ export const pokemonSlice = createSlice({
   },
 });
 
-export const { startLoadingPokemons, setPokemons } = pokemonSlice.actions;
+export const { startLoadingPokemons, setPokemons, consoleLogSomething } =
+  pokemonSlice.actions;
 export default pokemonSlice.reducer;
