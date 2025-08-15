@@ -10,11 +10,7 @@ import {
 export const PokemonApp = () => {
   const dispatch = useDispatch();
   const { page, pokemons, isLoading } = useSelector((state) => state.pokemons);
-  const lol = useSelector((state) => state.pokemons);
   const timerValue = useSelector((state) => state.timer);
-
-  console.log(timerValue);
-  console.log("lol", lol);
 
   useEffect(() => {
     dispatch(getPokemonsThunk());

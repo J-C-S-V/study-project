@@ -4,7 +4,6 @@ import {
   decrement,
   incrementByAmount,
   reset,
-  fetchUsers,
 } from "./slices/counter/counterSlice";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -12,6 +11,7 @@ import { counterThunk } from "./slices/counter/counterThunk";
 
 function App() {
   const counterValue = useSelector((state) => state.counter.value);
+  const usersData = useSelector((state) => state.counter.users);
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(2);
 
@@ -35,9 +35,10 @@ function App() {
       <input value={amount} type="number" onChange={handleChange} />
       <button onClick={() => dispatch(reset())}>Reset</button>
       <h2>Active users:</h2>
+      <h3>{usersData.length > 0 ? usersData[0].name : "Loading"}</h3>
       <ul>
-        {fetchUsers.map((item) => {
-          return <li>{item.user}</li>;
+        {usersData.map((item) => {
+          return <li key={item.id}>{item.name}</li>;
         })}
       </ul>
     </>

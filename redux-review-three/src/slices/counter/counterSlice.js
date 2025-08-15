@@ -20,7 +20,7 @@ export const counterSlice = createSlice({
     },
     fetchUsers: (state, action) => {
       state.users = action.payload;
-      console.log(state.users);
+      // console.log(state.users);
     },
   },
 });

@@ -6,6 +6,6 @@ export const counterThunk = () => {
     const data = await result.json();
     // data.map((item) => console.log(item.name));
     dispatch(fetchUsers(data));
-    console.log("data", data[0]);
+    // console.log("data", data);
   };
 };
