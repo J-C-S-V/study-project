@@ -1,8 +1,8 @@
 import { pokemonApi } from "../../api/pokemonApi";
 import { setPokemons, startLoadingPokemons } from "./pokemonSlice";
-import { startTimer } from "../timer/timerSlice";
+// import { startTimer } from "../timer/timerSlice";
 
-export const getPokemons = (page = 0) => {
+export const getPokemonsThunk = (page = 0) => {
   return async (dispatch) => {
     dispatch(startLoadingPokemons());
 
@@ -13,20 +13,20 @@ export const getPokemons = (page = 0) => {
     dispatch(setPokemons({ pokemons: data.results, page: page }));
   };
 };
-let timerId = null;
-export const setTimer = () => {
-  return (dispatch) => {
-    // Check if a timer is already running to prevent duplicates
-    if (timerId) {
-      clearInterval(timerId);
-    }
+// let timerId = null;
+// export const setTimer = () => {
+//   return (dispatch) => {
+//     // Check if a timer is already running to prevent duplicates
+//     if (timerId) {
+//       clearInterval(timerId);
+//     }
 
-    // Set up the interval to dispatch the action every 3 seconds
-    timerId = setInterval(() => {
-      dispatch(startTimer());
-    }, 1000);
-  };
-};
+//     // Set up the interval to dispatch the action every 3 seconds
+//     timerId = setInterval(() => {
+//       dispatch(startTimer());
+//     }, 1000);
+//   };
+// };
 
 //TODO: realizar peticion http con fetch
 // const response = await fetch(
@@ -34,7 +34,3 @@ export const setTimer = () => {
 // );
 // const data = await response.json();
 // console.log(data);
-
-export const myThunkActionCreator = (someArgument) => {
-  return (dispatch, getState) => {};
-};

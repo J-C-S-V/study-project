@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, setTimer } from "./slices/pokemon/thunks";
+import { getPokemonsThunk, setTimer } from "./slices/pokemon/thunks";
 import { resetTimer, startTimer } from "./slices/timer/timerSlice";
 import {
   consoleLogSomething,
@@ -17,7 +17,7 @@ export const PokemonApp = () => {
   console.log("lol", lol);
 
   useEffect(() => {
-    dispatch(getPokemons());
+    dispatch(getPokemonsThunk());
   }, []);
 
   // useEffect(() => {
