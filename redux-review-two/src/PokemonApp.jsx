@@ -1,16 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemonsThunk, setTimer } from "./slices/pokemon/thunks";
-import { resetTimer, startTimer } from "./slices/timer/timerSlice";
-import {
-  consoleLogSomething,
-  startLoadingPokemons,
-} from "./slices/pokemon/pokemonSlice";
+import { getPokemonsThunk } from "./slices/pokemon/thunks";
+import { consoleLogSomething } from "./slices/pokemon/pokemonSlice";
 
 export const PokemonApp = () => {
   const dispatch = useDispatch();
   const { page, pokemons, isLoading } = useSelector((state) => state.pokemons);
-  const timerValue = useSelector((state) => state.timer);
 
   useEffect(() => {
     dispatch(getPokemonsThunk());
@@ -33,17 +28,12 @@ export const PokemonApp = () => {
       <button
         disabled={isLoading}
         // onClick={() => dispatch(getPokemons(page + 1))}
-        onClick={() => dispatch(startLoadingPokemons())}
+        onClick={() => dispatch(getPokemonsThunk(1))}
       >
         Load more pokemons
       </button>
       <button onClick={() => dispatch(consoleLogSomething())}>Click</button>
       <div>Page: {page}</div>
-      <div>
-        {/* That type is the name of the action located in the timerSlice */}
-        Timer: {timerValue.value}
-      </div>
-      <span onClick={() => dispatch(resetTimer())}>Reset</span>
     </>
   );
 };
