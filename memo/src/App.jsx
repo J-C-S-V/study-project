@@ -1,4 +1,5 @@
 // import { Counter } from "./memo/counter";
+import { Counter } from "./useCallback/counter";
 import "./App.css";
 
 function App() {
