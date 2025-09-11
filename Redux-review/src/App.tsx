@@ -9,9 +9,13 @@ import "./App.css";
 
 // import { increment, decrement } from "./store/slices/counter";
 
+const selectCounterValue = (state: RootState) => state.counter.value;
+
 function App() {
-  const value = useAppSelector((state) => state.counter.value);
+  const value = useAppSelector(selectCounterValue);
   const dispatch = useAppDispatch();
+
+  const INCREMENT_AMOUNT = 5;
 
   return (
     <>
@@ -20,8 +24,8 @@ function App() {
       <button onClick={() => dispatch(decrement())}>Decrement</button>
       <button onClick={() => dispatch(increment())}>Increment</button>
       <button onClick={() => dispatch(incrementByTwo())}>Increment by 2</button>
-      <button onClick={() => dispatch(incrementByAmount(5))}>
-        Increment by 5
+      <button onClick={() => dispatch(incrementByAmount(INCREMENT_AMOUNT))}>
+        Increment by {INCREMENT_AMOUNT}
       </button>
     </>
   );
