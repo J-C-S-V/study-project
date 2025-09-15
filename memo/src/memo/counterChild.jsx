@@ -8,3 +8,5 @@ export const CounterChild = memo(() => {
     </div>
   );
 });
+
+// export default memo(CounterChild); => that's another way to export using memo
