@@ -46,8 +46,14 @@ function App() {
   }
 
   
-  const logOut = () => {
-    
+  const signOut = () => {
+    auth.signOut()
+    .then((response) => {
+      console.log('Sign out response', response)
+    })
+    .catch((error) => {
+      console.error('Error logging out', error)
+    })
   }
 
   return (
@@ -55,6 +61,7 @@ function App() {
       <h1>Hello {name}</h1>
       <button onClick={signUp}>Sign Up</button>
       <button onClick={signIn}>Sign In</button>
+      <button onClick={signOut}>Sign Out</button>
     </>
   )
 }
