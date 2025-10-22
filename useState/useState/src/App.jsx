@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
-import { Child } from './components/Child'
+import { Child } from "./components/Child";
+import { Test } from "./components/Test";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -20,6 +21,10 @@ function App() {
       <button onClick={handleClick}>Decrement</button>{" "}
       <button onClick={handleClickPlus}>Increment</button>
       <Child />
+      <Test>
+        <h1>hi</h1>
+        <h2>hola</h2>
+      </Test>
     </>
   );
 }
